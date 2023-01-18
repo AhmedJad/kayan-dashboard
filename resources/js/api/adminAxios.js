@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const adminApi = axios.create({
-    baseURL: 'http://localhost:8080/api/'
+    baseURL: 'http://localhost:8001/api/'
 });
 
 adminApi.interceptors.request.use(

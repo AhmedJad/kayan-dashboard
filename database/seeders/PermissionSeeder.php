@@ -331,9 +331,9 @@ class PermissionSeeder extends Seeder
             ['name' => 'footer read', 'role' => 'footer'],
             ['name' => 'footer edit', 'role' => 'footer'],
 
-            //About
-            ['name' => 'about read', 'role' => 'about'],
-            ['name' => 'about edit', 'role' => 'about'],
+            // //About
+            // ['name' => 'about read', 'role' => 'about'],
+            // ['name' => 'about edit', 'role' => 'about'],
 
         ];
 

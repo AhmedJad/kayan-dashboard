@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdvertisePackageSeeder::class);
         $this->call(AdvertiseScheduleSeeder::class);
         $this->call(AdvertiseSeeder::class);
-        $this->call(FooterLinkSeeder::class);
         $this->call(AboutBannerSeeder::class);
     }
 }

@@ -78,7 +78,7 @@ class CategoryController extends Controller
             // Validator request
             $v = Validator::make($request->all(), [
                 'name' => 'required|unique:categories,name',
-                'file' => 'required|file|mimes:png,jpg,jpeg',
+                'file' => 'required|file',
             ]);
 
             if ($v->fails()) {

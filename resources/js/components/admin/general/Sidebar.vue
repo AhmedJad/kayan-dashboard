@@ -10,7 +10,64 @@
               <span>{{ $t("sidebar.Dashboard") }}</span>
             </router-link>
           </li>
+          <li class="submenu" v-if="permission.includes('management')">
+            <a href="#"
+              ><i class="fas fa-suitcase"></i>
+              <span>{{ $t("sidebar.Management") }}</span>
+              <span :class="['menu-arrow', 'menu-arrow-ar']"></span>
+            </a>
+            <ul>
+              <li
+                :class="[$route.name == 'indexDepartment' ? 'active' : '']"
+                v-if="permission.includes('department read')"
+              >
+                <router-link
+                  :to="{ name: 'indexDepartment' }"
+                  :class="['sidebar-menu-rtl']"
+                >
+                  {{ $t("sidebar.Department") }}
+                </router-link>
+              </li>
+              <li
+                :class="[$route.name == 'indexJob' ? 'active' : '']"
+                v-if="permission.includes('job read')"
+              >
+                <router-link :to="{ name: 'indexJob' }" :class="['sidebar-menu-rtl']">
+                  {{ $t("sidebar.Jobs") }}
+                </router-link>
+              </li>
+            </ul>
+          </li>
 
+          <li class="submenu" v-if="permission.includes('role-employee')">
+            <a href="#"
+              ><i class="fas fa-user-tie"></i>
+              <span> {{ $t("sidebar.Employees") }}</span>
+              <span :class="['menu-arrow menu-arrow-ar']"></span
+            ></a>
+            <ul>
+              <li
+                :class="[$route.name == 'indexRole' ? 'active' : '']"
+                v-if="permission.includes('role read')"
+              >
+                <router-link :to="{ name: 'indexRole' }" :class="['sidebar-menu-rtl']">
+                  {{ $t("sidebar.Roles") }}
+                </router-link>
+              </li>
+
+              <li
+                :class="[$route.name == 'indexEmployee' ? 'active' : '']"
+                v-if="permission.includes('employee read')"
+              >
+                <router-link
+                  :to="{ name: 'indexEmployee' }"
+                  :class="['sidebar-menu-rtl']"
+                >
+                  {{ $t("sidebar.Employees") }}
+                </router-link>
+              </li>
+            </ul>
+          </li>
           <!-- Start Category Links -->
           <li class="submenu" v-if="permission.includes('management')">
             <a href="#">
@@ -296,7 +353,7 @@
               <span :class="['menu-arrow', 'menu-arrow-ar']"></span>
             </a>
             <ul>
-              <li
+              <!-- <li
                 v-if="permission.includes('kayanPrice read')"
                 :class="[$route.name == 'indexKayanPrice' ? 'active' : '']"
               >
@@ -306,7 +363,7 @@
                 >
                   {{ $t("global.Kayan Prices") }}
                 </router-link>
-              </li>
+              </li> -->
 
               <li
                 v-if="permission.includes('price read')"
@@ -860,17 +917,6 @@
             </a>
             <ul>
               <li
-                :class="[$route.name == 'FooterLinkIndex' ? 'active' : '']"
-                v-if="permission.includes('footer read')"
-              >
-                <router-link
-                  :to="{ name: 'FooterLinkIndex' }"
-                  :class="['sidebar-menu-rtl']"
-                >
-                  {{ $t("sidebar.FooterLinks") }}
-                </router-link>
-              </li>
-              <li
                 :class="[$route.name == 'NeedHelpForm' ? 'active' : '']"
                 v-if="permission.includes('footer read')"
               >
@@ -899,7 +945,7 @@
               </li>
             </ul>
           </li>
-          <li class="submenu" v-if="permission.includes('about')">
+          <!-- <li class="submenu" v-if="permission.includes('about')">
             <a href="#"
               ><i class="fas fa-suitcase"></i>
               <span>{{ $t("sidebar.About") }}</span>
@@ -917,67 +963,19 @@
                   {{ $t("sidebar.AboutBanners") }}
                 </router-link>
               </li>
-            </ul>
-          </li>
-          <li class="submenu" v-if="permission.includes('management')">
-            <a href="#"
-              ><i class="fas fa-suitcase"></i>
-              <span>{{ $t("sidebar.Management") }}</span>
-              <span :class="['menu-arrow', 'menu-arrow-ar']"></span>
-            </a>
-            <ul>
               <li
-                :class="[$route.name == 'indexDepartment' ? 'active' : '']"
-                v-if="permission.includes('department read')"
+                :class="[$route.name == 'AboutSectionIndex' ? 'active' : '']"
+                v-if="permission.includes('about read')"
               >
                 <router-link
-                  :to="{ name: 'indexDepartment' }"
+                  :to="{ name: 'AboutSectionIndex' }"
                   :class="['sidebar-menu-rtl']"
                 >
-                  {{ $t("sidebar.Department") }}
-                </router-link>
-              </li>
-              <li
-                :class="[$route.name == 'indexJob' ? 'active' : '']"
-                v-if="permission.includes('job read')"
-              >
-                <router-link :to="{ name: 'indexJob' }" :class="['sidebar-menu-rtl']">
-                  {{ $t("sidebar.Jobs") }}
+                  {{ $t("sidebar.AboutSections") }}
                 </router-link>
               </li>
             </ul>
-          </li>
-
-          <li class="submenu" v-if="permission.includes('role-employee')">
-            <a href="#"
-              ><i class="fas fa-user-tie"></i>
-              <span> {{ $t("sidebar.Employees") }}</span>
-              <span :class="['menu-arrow menu-arrow-ar']"></span
-            ></a>
-            <ul>
-              <li
-                :class="[$route.name == 'indexRole' ? 'active' : '']"
-                v-if="permission.includes('role read')"
-              >
-                <router-link :to="{ name: 'indexRole' }" :class="['sidebar-menu-rtl']">
-                  {{ $t("sidebar.Roles") }}
-                </router-link>
-              </li>
-
-              <li
-                :class="[$route.name == 'indexEmployee' ? 'active' : '']"
-                v-if="permission.includes('employee read')"
-              >
-                <router-link
-                  :to="{ name: 'indexEmployee' }"
-                  :class="['sidebar-menu-rtl']"
-                >
-                  {{ $t("sidebar.Employees") }}
-                </router-link>
-              </li>
-            </ul>
-          </li>
-
+          </li> -->
           <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------->
           <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------->
         </ul>

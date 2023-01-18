@@ -108,7 +108,7 @@
                             type="file"
                             @change="preview"
                             id="mediaPackage"
-                            accept="image/png,jepg,jpg"
+                            accept="image"
                           />
                         </div>
                         <span class="text-danger text-center">
